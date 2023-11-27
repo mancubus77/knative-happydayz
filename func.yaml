@@ -5,4 +5,9 @@ registry: quay.io/mancubus77
 image: quay.io/mancubus77/kn-happydayz:latest
 created: 2023-11-09T15:52:38.789721+11:00
 build:
-  builder: pack
+  git:
+    url: https://github.com/mancubus77/knative-happydayz.git
+    revision: main
+  buildpacks: []
+  # builder: pack
+  buildEnvs: []

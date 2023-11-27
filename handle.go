@@ -8,7 +8,7 @@ import (
 )
 
 type Response struct {
-	Lang    string `json:"lang"`
+	App     string `json:"app"`
 	Message string `json:"message"`
 }
 
@@ -22,11 +22,12 @@ type Simple struct {
 func Handle(ctx context.Context, res http.ResponseWriter, req *http.Request) {
 
 	fmt.Println("Received request")
-	fmt.Println(prettyPrint(req)) // echo to local output
+	fmt.Println(prettyPrint(req))
+	// fmt.Println(req.URL.Path) // echo to local output
 	// fmt.Fprint(res, prettyPrint(req)) // echo to caller
 	payload := Response{
 		Message: "I 💕 GoLang Serverless",
-		Lang:    "GoLang Serverless",
+		App:     "GoLang Serverless",
 	}
 	jsonResponse, _ := json.Marshal(payload)
 
@@ -38,5 +39,4 @@ func Handle(ctx context.Context, res http.ResponseWriter, req *http.Request) {
 
 	res.Header().Set("Content-Type", "application/json")
 	res.Write(jsonResponse)
-	// fmt.Fprint(res, jsonResponse)
 }
